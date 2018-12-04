@@ -61,3 +61,7 @@ img {
     width: 349px;
     background-color: azure;
   }
+  #timeleft {
+      color: orange;
+      background-color: white;
+  }

@@ -59,7 +59,7 @@ $(document).ready(function() {
         var userAnswer ="";
         var running = false;
         var questCount = askArray.length;
-        var decide;
+        var pick;
         var index;
         var newArray = [];
         var place = [];
@@ -77,14 +77,16 @@ $(document).ready(function() {
             if ($("#answerPane").hasClass("hidden")) {
                 $("#answerPane").removeClass("hidden").addClass("visible")
             }
-        
-            $("#play").click(function() {
-                $("#play").hide();
-                    showQuestion();
+            showQuestion();
                     runTimer();
                     for(var i = 0; i < askArray.length; i++) {
                 place.push(askArray[i]);
         }
+        })
+        
+            $("#play").click(function() {
+                $("#play").hide();
+                   
     })
 
             
@@ -101,10 +103,10 @@ $(document).ready(function() {
         timer --;
     
         
-        if (timer === 0) {
+        if (timer === -1) {
             unansweredCount++;
             stop();
-            $("#answerPane").html("<p>Time is up! The correct answer is: " + decide.choice[decide.answer] + "</p>");
+            $("#answerPane").html("<p>Time is up! The correct answer is: " + pick.choice[pick.answer] + "</p>");
             hidepicture();
         }	
     }
@@ -114,28 +116,28 @@ $(document).ready(function() {
         running = false;
         clearInterval(intervalId);
     }
-})
+
 //randomly pick question in array if not already shown
 //display question and loop though and display possible answers
 function showQuestion() {
 	//generate random index in array
 	index = Math.floor(Math.random()*askArray.length); {
-	decide = askArray[index];
+	pick = askArray[index];
 }
 }
 
 		//iterate through answer array and display
-		$("#questionPane").html("<h2>" + decide.question + "</h2>");
-		for(var i = 0; i < decide.choice.length; i++) {
+		$("#questionPane").html("<h2>" + pick.question + "</h2>");
+		for(var i = 0; i < pick.choice.length; i++) {
 			var userChoice = $("<div>");
 			userChoice.addClass("answerchoice");
-			userChoice.html(decide.choice[i]);
+			userChoice.html(pick.choice[i]);
 			//assign array position to it so can check answer
 			userChoice.attr("data-guessvalue", i);
 			$("#answerPane").append(userChoice);
-//		}
-}
-})
+		}
+
+
 
 //click function to select answer and outcomes
 $(".answerchoice").click(function () {
@@ -143,7 +145,7 @@ $(".answerchoice").click(function () {
 	userGuess = parseInt($(this).attr("data-guessvalue"));
 
 	//correct guess or wrong guess outcomes
-	if (userGuess === decide.answer) {
+	if (userGuess === pick.answer) {
 		stop();
 		correctCount++;
 		userGuess="";
@@ -154,7 +156,7 @@ $(".answerchoice").click(function () {
 		stop();
 		wrongCount++;
 		userGuess="";
-		$("#answerblock").html("<p>Wrong! The correct answer is: " + decide.choice[decide.answer] + "</p>");
+		$("#answerblock").html("<p>Wrong! The correct answer is: " + pick.choice[pick.answer] + "</p>");
 		hidepicture();
 	}
 
@@ -163,14 +165,14 @@ $(".answerchoice").click(function () {
 
 
 function hidepicture () {
-	$("#answerblock").append("<img src=" + choice.photo + ">");
+	$("#answerblock").append("<img src=" + pick.photo + ">");
 	newArray.push(pick);
 	askArray.splice(index,1);
-
+}
 	var hidpic = setTimeout(function() {
 		$("#answerblock").empty();
 		timer= 15;
-
+    
 	//run the score screen if all questions answered
 	if ((wrongCount + correctCount + unansweredCount) === qCount) {
 		$("#questionblock").empty();
@@ -191,14 +193,14 @@ function hidepicture () {
 	}, 3000);
 
 
-}
+
 
 $("#reset").on("click", function() {
 	$("#reset").hide();
 	$("#answerPane").empty();
 	$("#questionPane").empty();
-	for(var i = 0; i < holder.length; i++) {
-		askArray.push(holder[i]);
+	for(var i = 0; i < place.length; i++) {
+		askArray.push(place[i]);
 	}
 	runTimer();
 	displayQuestion();
@@ -210,4 +212,4 @@ $("#reset").on("click", function() {
       
 
    
- 
+}) 

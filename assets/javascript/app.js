@@ -58,7 +58,7 @@ $(document).ready(function() {
         var intervalId;
         var userAnswer ="";
         var running = false;
-        var questCount = askArray.length;
+        var qCount = askArray.length;
         var pick;
         var index;
         var newArray = [];
@@ -124,10 +124,8 @@ function showQuestion() {
 	index = Math.floor(Math.random()*askArray.length); {
 	pick = askArray[index];
 }
-}
-
-		//iterate through answer array and display
-		$("#questionPane").html("<h2>" + pick.question + "</h2>");
+//iterate through answer array and display
+$("#questionPane").html("<h2>" + pick.question + "</h2>");
 		for(var i = 0; i < pick.choice.length; i++) {
 			var userChoice = $("<div>");
 			userChoice.addClass("answerchoice");
@@ -135,10 +133,8 @@ function showQuestion() {
 			//assign array position to it so can check answer
 			userChoice.attr("data-guessvalue", i);
 			$("#answerPane").append(userChoice);
-		}
-
-
-
+		
+    }
 //click function to select answer and outcomes
 $(".answerchoice").click(function () {
 	//grab array position from userGuess
@@ -156,30 +152,30 @@ $(".answerchoice").click(function () {
 		stop();
 		wrongCount++;
 		userGuess="";
-		$("#answerblock").html("<p>Wrong! The correct answer is: " + pick.choice[pick.answer] + "</p>");
+		$("#answerPane").html("<p>Wrong! The correct answer is: " + pick.choice[pick.answer] + "</p>");
 		hidepicture();
 	}
 
 })
-
+}
 
 
 function hidepicture () {
-	$("#answerblock").append("<img src=" + pick.photo + ">");
+	$("#answerPane").append("<img src=" + pick.photo + ">");
 	newArray.push(pick);
 	askArray.splice(index,1);
 }
 	var hidpic = setTimeout(function() {
-		$("#answerblock").empty();
+		$("#answerPane").empty();
 		timer= 15;
     
 	//run the score screen if all questions answered
 	if ((wrongCount + correctCount + unansweredCount) === qCount) {
-		$("#questionblock").empty();
-		$("#questionblock").html("<h3>Game Over!  Here's how you did: </h3>");
-		$("#answerblock").append("<h4> Correct: " + correctCount + "</h4>" );
-		$("#answerblock").append("<h4> Incorrect: " + wrongCount + "</h4>" );
-		$("#answerblock").append("<h4> Unanswered: " + unansweredCount + "</h4>" );
+		$("#questionPane").empty();
+		$("#questionPane").html("<h3>Game Over!  Here's how you did: </h3>");
+		$("#answerPane").append("<h4> Correct: " + correctCount + "</h4>" );
+		$("#answerPane").append("<h4> Incorrect: " + wrongCount + "</h4>" );
+		$("#answerPane").append("<h4> Unanswered: " + unansweredCount + "</h4>" );
 		$("#reset").show();
 		correctCount = 0;
 		wrongCount = 0;
@@ -187,7 +183,7 @@ function hidepicture () {
 
 	} else {
 		runTimer();
-		displayQuestion();
+		showQuestion();
 
 	}
 	}, 3000);
@@ -203,7 +199,7 @@ $("#reset").on("click", function() {
 		askArray.push(place[i]);
 	}
 	runTimer();
-	displayQuestion();
+	showQuestion();
 
 })
 

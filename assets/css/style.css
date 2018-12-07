@@ -17,8 +17,13 @@ body {
 #play {
     margin-top: 46%;
 }
+
+#again {
+margin-top: 56%;
+}
+
 img {
-    max-height: 250px;
+    height: auto;
     width: auto;
   }
 .hidden {
@@ -29,7 +34,7 @@ img {
 	display:block;
 }
 #reset {
-    margin-top: 73%;
+    margin-top: 7%;
     margin-left: -144px;
 }
 .answerchoice {
@@ -45,23 +50,24 @@ img {
 #answerPane {
     text-align: center;
     margin-left: 70%;
-    border: 1px solid;
-    color: red;
+    border: 1px solid blue;
+    color: blue;
     background-color: white;
     width: 330px;
+    min-height: 200px;
   
   }
   
   #questionPane {
     text-align: center;
     font-weight: bold;
-    color: orange;
-    border: 2px solid;
+    color: blue;
+    border: 2px solid blue;
     margin-left: 68%;
     width: 349px;
     background-color: azure;
   }
   #timeleft {
-      color: orange;
+      color: red;
       background-color: white;
   }

@@ -23,7 +23,7 @@ $(document).ready(function () {
             question: "What NFL team has won the most Superbowls?",
             choice: ["Dallas Cowboys", "New England Patriots", "San Francisco 49ers", "Pittsburgh Steelers"],
             answer: 3,
-            photo: "assets/images/super.jpg"
+            photo: "assets/images/Super.jpg"
         },
         {
             question: "Which NHL Hockey team has won the most Stanley Cups?",
@@ -145,6 +145,7 @@ $(document).ready(function () {
 
             //correct guess or wrong guess outcomes
             if (userGuess === pick.answer) {
+                $("#applause")[0].play();
                 stop();
                 correctCount++;
                 userGuess = "";

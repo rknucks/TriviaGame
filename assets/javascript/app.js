@@ -100,11 +100,12 @@ $(document).ready(function () {
     //countdown
     function decrement() {
         console.log("Timer started?")
-        $("#timeleft").html("<h3>Time remaining: " + timer + "</h3>");
         timer--;
+        $("#timeleft").html("<h3>Time remaining: " + timer + "</h3>");
+        
 
 
-        if (timer === -1) {
+        if (timer === 0) {
             unansweredCount++;
             stop();
             $("#answerPane").html("<h3>You ran out of time! The correct answer is: " + pick.choice[pick.answer] + "</h3>");

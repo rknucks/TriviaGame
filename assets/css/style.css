@@ -5,8 +5,8 @@
 
 body {
     background-image: url("http://www.taptvtonight.com/wp-content/uploads/2012/11/sports.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: no-repeat; 
+    background-size: cover; 
 }
 #title {
     margin-left: 33%;
@@ -71,3 +71,21 @@ img {
       color: red;
       background-color: white;
   }
+  @media screen and (max-width: 980px) {
+    body {max-width: 980px;}
+    #col {width: 100%;}
+    img {max-width: 980px;}
+}
+@media screen and (max-width: 768px) {
+    body {max-width: 768px;
+    background-size: contain;}
+    #col {width: 100%;}
+    img {max-width: 768px;}
+}
+@media screen and (max-width: 640px) {
+    body {max-width: 640px;
+    background-size: contain;}
+    #col {width: 100%;}
+    img {width: 640px;}
+}
+

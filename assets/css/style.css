@@ -81,11 +81,24 @@ img {
     background-size: contain;}
     #col {width: 100%;}
     img {max-width: 768px;}
+    #questionPane {
+        margin-left: 10%;
+    }
+    #answerPane {
+        margin-left: 10%;
+    }
+    
 }
 @media screen and (max-width: 640px) {
     body {max-width: 640px;
     background-size: contain;}
     #col {width: 100%;}
     img {width: 640px;}
+    #questionPane {
+        margin-left: 10%;
+    }
+    #answerPane {
+        margin-left: 10%;
+    }
 }
 

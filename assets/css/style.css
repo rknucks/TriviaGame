@@ -73,14 +73,15 @@ img {
   }
   @media screen and (max-width: 980px) {
     body {max-width: 980px;}
-    #col {width: 100%;}
-    img {max-width: 980px;}
+    #container {max-width: 980px;}
+    img {max-width: 250px;}
 }
-@media screen and (max-width: 768px) {
-    body {max-width: 768px;
+@media screen and (max-width: 750px) {
+    #container {max-width: 750px;
     background-size: contain;}
-    #col {width: 100%;}
-    img {max-width: 768px;}
+    body {max-width: 750px;}
+    img {max-width: 250px;
+    margin-left: 10%;}
     #questionPane {
         margin-left: 10%;
     }
@@ -92,8 +93,10 @@ img {
 @media screen and (max-width: 640px) {
     body {max-width: 640px;
     background-size: contain;}
-    #col {width: 100%;}
-    img {width: 640px;}
+    #container {
+        max-width: 640px;
+    }
+        img {max-width: 250px;}
     #questionPane {
         margin-left: 10%;
     }
